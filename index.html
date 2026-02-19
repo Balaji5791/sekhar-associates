@@ -1,0 +1,876 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sekhar & Associates | Chartered Accountants – Tirupati</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --gold: #C9A84C;
+    --gold-light: #E8C96A;
+    --deep: #0D1B2A;
+    --deep2: #132232;
+    --ink: #1C2B3A;
+    --cream: #FAF7F2;
+    --muted: #8A9BAD;
+    --accent: #2563EB;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--cream);
+    color: var(--ink);
+    overflow-x: hidden;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 5%;
+    height: 72px;
+    background: rgba(13,27,42,0.96);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(201,168,76,0.25);
+  }
+  .nav-brand {
+    display: flex; align-items: center; gap: 12px;
+  }
+  .nav-monogram {
+    width: 40px; height: 40px;
+    background: var(--gold);
+    color: var(--deep);
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Playfair Display', serif;
+    font-weight: 900; font-size: 18px;
+    border-radius: 4px;
+  }
+  .nav-name {
+    color: #fff;
+    font-family: 'Playfair Display', serif;
+    font-size: 15px; font-weight: 700;
+    line-height: 1.2;
+  }
+  .nav-name span { color: var(--gold); }
+  .nav-links { display: flex; gap: 36px; list-style: none; }
+  .nav-links a {
+    color: rgba(255,255,255,0.7);
+    text-decoration: none; font-size: 13px; font-weight: 500;
+    letter-spacing: 0.04em;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--gold); }
+  .nav-cta {
+    background: var(--gold); color: var(--deep);
+    border: none; cursor: pointer;
+    padding: 10px 22px; border-radius: 4px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 13px; font-weight: 700;
+    letter-spacing: 0.03em;
+    transition: background 0.2s, transform 0.15s;
+  }
+  .nav-cta:hover { background: var(--gold-light); transform: translateY(-1px); }
+
+  /* ── HERO ── */
+  #home {
+    min-height: 100vh;
+    background: var(--deep);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    padding: 100px 5% 60px;
+    position: relative;
+    overflow: hidden;
+  }
+  #home::before {
+    content: '';
+    position: absolute; top: -200px; right: -200px;
+    width: 700px; height: 700px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(201,168,76,0.10) 0%, transparent 65%);
+    pointer-events: none;
+  }
+  #home::after {
+    content: '';
+    position: absolute; bottom: 0; left: 0; right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--gold), transparent);
+  }
+  .hero-label {
+    display: inline-flex; align-items: center; gap: 10px;
+    background: rgba(201,168,76,0.12);
+    border: 1px solid rgba(201,168,76,0.3);
+    color: var(--gold);
+    padding: 6px 16px; border-radius: 100px;
+    font-size: 12px; font-weight: 500; letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-bottom: 28px;
+    animation: fadeUp 0.8s ease both;
+  }
+  .hero-label::before { content: '★'; font-size: 10px; }
+  .hero-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(42px, 5vw, 72px);
+    color: #fff;
+    line-height: 1.1;
+    margin-bottom: 24px;
+    animation: fadeUp 0.9s 0.1s ease both;
+  }
+  .hero-title em { color: var(--gold); font-style: italic; }
+  .hero-desc {
+    color: rgba(255,255,255,0.6);
+    font-size: 16px; line-height: 1.7;
+    max-width: 480px;
+    margin-bottom: 40px;
+    animation: fadeUp 0.9s 0.2s ease both;
+  }
+  .hero-actions {
+    display: flex; gap: 16px;
+    animation: fadeUp 0.9s 0.3s ease both;
+  }
+  .btn-primary {
+    background: var(--gold); color: var(--deep);
+    padding: 14px 32px; border-radius: 4px;
+    text-decoration: none; font-weight: 700; font-size: 14px;
+    letter-spacing: 0.03em;
+    transition: background 0.2s, transform 0.15s;
+  }
+  .btn-primary:hover { background: var(--gold-light); transform: translateY(-2px); }
+  .btn-outline {
+    border: 1px solid rgba(255,255,255,0.25);
+    color: #fff; padding: 14px 32px; border-radius: 4px;
+    text-decoration: none; font-size: 14px; font-weight: 500;
+    transition: border-color 0.2s, background 0.2s;
+  }
+  .btn-outline:hover { border-color: var(--gold); background: rgba(201,168,76,0.08); }
+  .hero-stats {
+    display: flex; gap: 40px; margin-top: 56px;
+    padding-top: 40px;
+    border-top: 1px solid rgba(255,255,255,0.1);
+    animation: fadeUp 0.9s 0.4s ease both;
+  }
+  .stat-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 40px; color: var(--gold); font-weight: 900;
+    line-height: 1;
+  }
+  .stat-lbl {
+    color: rgba(255,255,255,0.5); font-size: 12px;
+    text-transform: uppercase; letter-spacing: 0.06em;
+    margin-top: 4px;
+  }
+  .hero-visual {
+    display: flex; justify-content: center; align-items: center;
+    animation: fadeIn 1.2s 0.3s ease both;
+  }
+  .hero-card {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(201,168,76,0.2);
+    border-radius: 16px;
+    padding: 40px;
+    width: 380px;
+    backdrop-filter: blur(8px);
+  }
+  .rating-row {
+    display: flex; align-items: center; gap: 10px;
+    margin-bottom: 24px;
+  }
+  .stars { color: var(--gold); font-size: 18px; }
+  .rating-num { color: #fff; font-family: 'Playfair Display', serif; font-size: 28px; font-weight: 700; }
+  .rating-count { color: var(--muted); font-size: 13px; }
+  .review-cards { display: flex; flex-direction: column; gap: 14px; }
+  .review-item {
+    background: rgba(255,255,255,0.04);
+    border-left: 3px solid var(--gold);
+    padding: 14px 16px;
+    border-radius: 0 8px 8px 0;
+  }
+  .review-text { color: rgba(255,255,255,0.75); font-size: 13px; line-height: 1.5; font-style: italic; }
+  .review-author { color: var(--gold); font-size: 12px; margin-top: 6px; font-weight: 500; }
+  .hero-contact-pill {
+    margin-top: 24px;
+    display: flex; align-items: center; gap: 12px;
+    background: rgba(201,168,76,0.12);
+    border: 1px solid rgba(201,168,76,0.25);
+    padding: 12px 18px; border-radius: 8px;
+    color: var(--gold); font-size: 13px;
+  }
+  .hero-contact-pill a { color: var(--gold); text-decoration: none; font-weight: 600; font-size: 15px; }
+
+  /* ── SECTION SHARED ── */
+  section { padding: 96px 5%; }
+  .section-label {
+    display: inline-block;
+    color: var(--gold); font-size: 11px; font-weight: 700;
+    letter-spacing: 0.12em; text-transform: uppercase;
+    margin-bottom: 12px;
+  }
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(32px, 4vw, 52px);
+    line-height: 1.15; margin-bottom: 16px;
+  }
+  .section-sub {
+    color: var(--muted); font-size: 16px; line-height: 1.6;
+    max-width: 560px; margin-bottom: 56px;
+  }
+
+  /* ── SERVICES ── */
+  #services { background: #fff; }
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 24px;
+  }
+  .service-card {
+    border: 1px solid #E8EEF4;
+    border-radius: 12px;
+    padding: 36px 32px;
+    transition: border-color 0.25s, transform 0.25s, box-shadow 0.25s;
+    cursor: default;
+  }
+  .service-card:hover {
+    border-color: var(--gold);
+    transform: translateY(-4px);
+    box-shadow: 0 16px 48px rgba(0,0,0,0.08);
+  }
+  .svc-icon {
+    width: 52px; height: 52px;
+    background: rgba(201,168,76,0.1);
+    border-radius: 12px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 24px;
+    margin-bottom: 20px;
+  }
+  .svc-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 20px; font-weight: 700;
+    margin-bottom: 10px; color: var(--ink);
+  }
+  .svc-desc { color: var(--muted); font-size: 14px; line-height: 1.65; }
+
+  /* ── ABOUT ── */
+  #about {
+    background: var(--deep);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: center;
+    color: #fff;
+  }
+  #about .section-title { color: #fff; }
+  #about .section-sub { color: rgba(255,255,255,0.55); }
+  .about-points { display: flex; flex-direction: column; gap: 20px; }
+  .about-pt {
+    display: flex; gap: 16px;
+    align-items: flex-start;
+  }
+  .pt-icon {
+    width: 36px; height: 36px;
+    flex-shrink: 0;
+    background: rgba(201,168,76,0.15);
+    border: 1px solid rgba(201,168,76,0.3);
+    border-radius: 8px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 16px;
+  }
+  .pt-text h4 { color: #fff; font-size: 15px; font-weight: 600; margin-bottom: 4px; }
+  .pt-text p { color: rgba(255,255,255,0.5); font-size: 13px; line-height: 1.5; }
+  .about-img-block {
+    position: relative;
+  }
+  .about-big-card {
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(201,168,76,0.25);
+    border-radius: 16px;
+    padding: 48px 36px;
+    text-align: center;
+  }
+  .about-seal {
+    width: 100px; height: 100px;
+    border: 3px solid var(--gold);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Playfair Display', serif;
+    font-size: 28px; font-weight: 900;
+    color: var(--gold);
+    margin: 0 auto 24px;
+  }
+  .about-card-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 24px; font-weight: 700; color: #fff;
+    margin-bottom: 6px;
+  }
+  .about-card-title { color: var(--gold); font-size: 13px; letter-spacing: 0.06em; text-transform: uppercase; }
+  .about-card-addr {
+    margin-top: 24px; padding-top: 24px;
+    border-top: 1px solid rgba(255,255,255,0.1);
+    color: rgba(255,255,255,0.5); font-size: 13px; line-height: 1.7;
+  }
+  .about-card-addr strong { color: var(--gold); }
+
+  /* ── WHY US ── */
+  #why { background: var(--cream); }
+  .why-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+  }
+  .why-card {
+    background: #fff;
+    border: 1px solid #E8EEF4;
+    border-radius: 12px;
+    padding: 32px 28px;
+    text-align: center;
+    transition: border-color 0.25s, box-shadow 0.25s;
+  }
+  .why-card:hover {
+    border-color: var(--gold);
+    box-shadow: 0 8px 32px rgba(0,0,0,0.06);
+  }
+  .why-icon { font-size: 36px; margin-bottom: 16px; }
+  .why-title { font-family: 'Playfair Display', serif; font-size: 18px; font-weight: 700; margin-bottom: 8px; }
+  .why-desc { color: var(--muted); font-size: 13px; line-height: 1.6; }
+
+  /* ── REVIEWS ── */
+  #reviews { background: #fff; }
+  .reviews-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+  }
+  .review-card {
+    border: 1px solid #E8EEF4;
+    border-radius: 12px;
+    padding: 32px;
+    position: relative;
+    transition: border-color 0.25s, box-shadow 0.25s;
+  }
+  .review-card:hover {
+    border-color: var(--gold);
+    box-shadow: 0 8px 32px rgba(0,0,0,0.06);
+  }
+  .review-card::before {
+    content: '"';
+    position: absolute; top: 16px; right: 24px;
+    font-family: 'Playfair Display', serif;
+    font-size: 64px; line-height: 1; color: rgba(201,168,76,0.15);
+  }
+  .rev-stars { color: var(--gold); font-size: 14px; margin-bottom: 14px; }
+  .rev-text { font-size: 14px; line-height: 1.7; color: var(--ink); font-style: italic; margin-bottom: 20px; }
+  .rev-author { font-size: 13px; font-weight: 600; color: var(--ink); }
+  .rev-badge { color: var(--muted); font-size: 12px; }
+  .overall-rating {
+    display: flex; align-items: center; gap: 32px;
+    background: var(--deep);
+    border-radius: 16px;
+    padding: 40px 48px;
+    margin-bottom: 48px;
+  }
+  .big-rating {
+    font-family: 'Playfair Display', serif;
+    font-size: 72px; font-weight: 900; color: var(--gold);
+    line-height: 1;
+  }
+  .rating-info h3 { color: #fff; font-size: 18px; margin-bottom: 6px; }
+  .rating-info .stars-row { color: var(--gold); font-size: 20px; margin-bottom: 6px; }
+  .rating-info p { color: rgba(255,255,255,0.5); font-size: 13px; }
+
+  /* ── CONTACT ── */
+  #contact { background: var(--deep); color: #fff; }
+  #contact .section-title { color: #fff; }
+  #contact .section-sub { color: rgba(255,255,255,0.5); }
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 64px;
+  }
+  .contact-info { display: flex; flex-direction: column; gap: 28px; }
+  .contact-item {
+    display: flex; gap: 16px; align-items: flex-start;
+  }
+  .c-icon {
+    width: 44px; height: 44px; flex-shrink: 0;
+    background: rgba(201,168,76,0.15);
+    border: 1px solid rgba(201,168,76,0.3);
+    border-radius: 10px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 18px;
+  }
+  .c-label { color: var(--gold); font-size: 11px; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 4px; }
+  .c-val { color: #fff; font-size: 15px; font-weight: 500; text-decoration: none; }
+  .c-val:hover { color: var(--gold); }
+  .c-sub { color: rgba(255,255,255,0.4); font-size: 13px; }
+  .contact-form { display: flex; flex-direction: column; gap: 16px; }
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .form-field {
+    display: flex; flex-direction: column; gap: 8px;
+  }
+  .form-field label { color: rgba(255,255,255,0.6); font-size: 12px; letter-spacing: 0.05em; text-transform: uppercase; }
+  .form-field input,
+  .form-field textarea,
+  .form-field select {
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.12);
+    border-radius: 8px;
+    padding: 13px 16px;
+    color: #fff;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 14px;
+    outline: none;
+    transition: border-color 0.2s;
+  }
+  .form-field select option { background: var(--deep2); }
+  .form-field input:focus,
+  .form-field textarea:focus,
+  .form-field select:focus { border-color: var(--gold); }
+  .form-field textarea { height: 110px; resize: none; }
+  .form-field input::placeholder,
+  .form-field textarea::placeholder { color: rgba(255,255,255,0.25); }
+  .submit-btn {
+    background: var(--gold); color: var(--deep);
+    border: none; cursor: pointer;
+    padding: 15px 36px; border-radius: 8px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 14px; font-weight: 700;
+    align-self: flex-start;
+    letter-spacing: 0.03em;
+    transition: background 0.2s, transform 0.15s;
+  }
+  .submit-btn:hover { background: var(--gold-light); transform: translateY(-2px); }
+
+  /* ── FOOTER ── */
+  footer {
+    background: #07111C;
+    color: rgba(255,255,255,0.4);
+    padding: 40px 5%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 13px;
+    border-top: 1px solid rgba(201,168,76,0.15);
+  }
+  .footer-brand { font-family: 'Playfair Display', serif; font-size: 18px; color: #fff; }
+  .footer-brand span { color: var(--gold); }
+  .footer-links { display: flex; gap: 28px; }
+  .footer-links a { color: rgba(255,255,255,0.4); text-decoration: none; transition: color 0.2s; }
+  .footer-links a:hover { color: var(--gold); }
+
+  /* ── ANIMATIONS ── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(28px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes fadeIn {
+    from { opacity: 0; } to { opacity: 1; }
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 900px) {
+    #home, .contact-grid, #about {
+      grid-template-columns: 1fr;
+    }
+    .hero-visual { display: none; }
+    .why-grid { grid-template-columns: repeat(2, 1fr); }
+    .reviews-grid { grid-template-columns: 1fr; }
+    .nav-links { display: none; }
+    .overall-rating { flex-direction: column; gap: 16px; }
+  }
+  @media (max-width: 600px) {
+    .why-grid { grid-template-columns: 1fr; }
+    .form-row { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-brand">
+    <div class="nav-monogram">S&A</div>
+    <div class="nav-name">Sekhar <span>&</span> Associates<br>
+      <span style="font-size:11px;font-family:'DM Sans',sans-serif;font-weight:400;color:rgba(255,255,255,0.4);">Chartered Accountants</span>
+    </div>
+  </div>
+  <ul class="nav-links">
+    <li><a href="#home">Home</a></li>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#reviews">Reviews</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <button class="nav-cta" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Book Consultation</button>
+</nav>
+
+<!-- HERO -->
+<section id="home">
+  <div>
+    <div class="hero-label">Certified Public Accountants · Tirupati, AP</div>
+    <h1 class="hero-title">
+      Trusted Financial<br>
+      <em>Expertise</em> for<br>
+      Every Goal
+    </h1>
+    <p class="hero-desc">
+      Sekhar & Associates brings decades of certified accounting expertise to individuals and businesses in Tirupati and across Andhra Pradesh. From tax compliance to audit services — we deliver with precision and speed.
+    </p>
+    <div class="hero-actions">
+      <a href="#services" class="btn-primary">Explore Services</a>
+      <a href="tel:08499990629" class="btn-outline">📞 Call Now</a>
+    </div>
+    <div class="hero-stats">
+      <div>
+        <div class="stat-num">4.9<span style="font-size:22px">★</span></div>
+        <div class="stat-lbl">Google Rating</div>
+      </div>
+      <div>
+        <div class="stat-num">87+</div>
+        <div class="stat-lbl">Client Reviews</div>
+      </div>
+      <div>
+        <div class="stat-num">15+</div>
+        <div class="stat-lbl">Years of Experience</div>
+      </div>
+    </div>
+  </div>
+  <div class="hero-visual">
+    <div class="hero-card">
+      <div class="rating-row">
+        <span class="stars">★★★★★</span>
+        <span class="rating-num">4.9</span>
+        <span class="rating-count">/ 5 (87 reviews)</span>
+      </div>
+      <div class="review-cards">
+        <div class="review-item">
+          <div class="review-text">"Reasonable prices and the work will be done very quickly."</div>
+          <div class="review-author">— Verified Client</div>
+        </div>
+        <div class="review-item">
+          <div class="review-text">"Satisfied with the service and response."</div>
+          <div class="review-author">— Verified Client</div>
+        </div>
+        <div class="review-item">
+          <div class="review-text">"Excellent services provided by CA & Staff."</div>
+          <div class="review-author">— Verified Client</div>
+        </div>
+      </div>
+      <div class="hero-contact-pill">
+        📍 Dr Mahal Rd, Tirupati &nbsp;|&nbsp; <a href="tel:08499990629">084999 90629</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services">
+  <div class="section-label">What We Do</div>
+  <h2 class="section-title">Comprehensive Accounting &<br>Financial Services</h2>
+  <p class="section-sub">From tax filing to statutory audits, we handle every financial need with diligence and confidentiality.</p>
+  <div class="services-grid">
+    <div class="service-card">
+      <div class="svc-icon">🧾</div>
+      <div class="svc-title">Income Tax Filing</div>
+      <div class="svc-desc">Accurate and timely ITR filing for individuals, firms, and corporations. We ensure maximum deductions and full compliance with the latest tax laws.</div>
+    </div>
+    <div class="service-card">
+      <div class="svc-icon">📊</div>
+      <div class="svc-title">GST Compliance</div>
+      <div class="svc-desc">Complete GST registration, return filing (GSTR-1, 3B, 9), reconciliation, and advisory services to keep your business fully compliant.</div>
+    </div>
+    <div class="service-card">
+      <div class="svc-icon">🔍</div>
+      <div class="svc-title">Audit & Assurance</div>
+      <div class="svc-desc">Statutory audits, internal audits, tax audits, and stock audits conducted by experienced CAs with meticulous attention to detail.</div>
+    </div>
+    <div class="service-card">
+      <div class="svc-icon">🏢</div>
+      <div class="svc-title">Company Registration</div>
+      <div class="svc-desc">End-to-end incorporation services for Pvt Ltd, LLP, OPC, and partnership firms. We handle MCA filings, ROC compliance, and annual returns.</div>
+    </div>
+    <div class="service-card">
+      <div class="svc-icon">💼</div>
+      <div class="svc-title">Business Advisory</div>
+      <div class="svc-desc">Strategic financial planning, business valuation, project reports, and CMA data preparation for bank loans and funding requirements.</div>
+    </div>
+    <div class="service-card">
+      <div class="svc-icon">📑</div>
+      <div class="svc-title">Accounting & Bookkeeping</div>
+      <div class="svc-desc">Accurate day-to-day accounting, finalization of accounts, payroll processing, and MIS reporting to give you full financial visibility.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div>
+    <div class="section-label">About the Firm</div>
+    <h2 class="section-title">Committed to<br><em style="color:var(--gold);font-style:italic;">Excellence</em> in<br>Every Engagement</h2>
+    <p class="section-sub">Sekhar & Associates is a premier CA firm based in Tirupati, serving clients across Andhra Pradesh with integrity, speed, and professional expertise.</p>
+    <div class="about-points">
+      <div class="about-pt">
+        <div class="pt-icon">⚡</div>
+        <div class="pt-text">
+          <h4>Fast Turnaround</h4>
+          <p>We prioritize efficiency — most assignments are completed well ahead of deadlines without compromising accuracy.</p>
+        </div>
+      </div>
+      <div class="about-pt">
+        <div class="pt-icon">💰</div>
+        <div class="pt-text">
+          <h4>Reasonable & Transparent Pricing</h4>
+          <p>No hidden costs. Our fees are competitive and clearly communicated upfront so you always know what to expect.</p>
+        </div>
+      </div>
+      <div class="about-pt">
+        <div class="pt-icon">🤝</div>
+        <div class="pt-text">
+          <h4>Client-First Approach</h4>
+          <p>We treat every client's financial matter with the same dedication, whether you're a salaried individual or a large enterprise.</p>
+        </div>
+      </div>
+      <div class="about-pt">
+        <div class="pt-icon">🎓</div>
+        <div class="pt-text">
+          <h4>Certified & Experienced Team</h4>
+          <p>Our qualified CAs and professional staff stay updated with all regulatory changes to give you the best guidance.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="about-img-block">
+    <div class="about-big-card">
+      <div class="about-seal">S&A</div>
+      <div class="about-card-name">Sekhar & Associates</div>
+      <div class="about-card-title">Chartered Accountants · Certified Public Accountant</div>
+      <div class="about-card-addr">
+        <strong>📍 Address</strong><br>
+        # 19-6-48/A, Dr Mahal Rd,<br>
+        Beside Ruchikara Restaurant,<br>
+        Tirupati, Andhra Pradesh – 517501<br><br>
+        <strong>📞 Phone</strong><br>
+        <a href="tel:08499990629" style="color:var(--gold);text-decoration:none;">084999 90629</a><br><br>
+        <strong>🕐 Hours</strong><br>
+        Mon–Sat: 10:00 AM – 6:30 PM<br>
+        Sunday: Closed
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHY US -->
+<section id="why">
+  <div class="section-label">Why Choose Us</div>
+  <h2 class="section-title">The Sekhar & Associates Advantage</h2>
+  <p class="section-sub">Thousands of clients in Tirupati trust us for one simple reason — we deliver results that matter.</p>
+  <div class="why-grid">
+    <div class="why-card">
+      <div class="why-icon">⭐</div>
+      <div class="why-title">4.9 Star Rated</div>
+      <div class="why-desc">Consistently rated among the highest by our clients on Google for service quality and reliability.</div>
+    </div>
+    <div class="why-card">
+      <div class="why-icon">🏆</div>
+      <div class="why-title">Certified Professionals</div>
+      <div class="why-desc">ICAI-qualified Chartered Accountants with specialized knowledge across multiple domains of finance and taxation.</div>
+    </div>
+    <div class="why-card">
+      <div class="why-icon">🔒</div>
+      <div class="why-title">100% Confidential</div>
+      <div class="why-desc">Your financial information is handled with the highest standards of confidentiality and data security.</div>
+    </div>
+    <div class="why-card">
+      <div class="why-icon">📲</div>
+      <div class="why-title">Responsive Support</div>
+      <div class="why-desc">Quick responses to queries and status updates at every stage — no more chasing your accountant.</div>
+    </div>
+  </div>
+</section>
+
+<!-- REVIEWS -->
+<section id="reviews">
+  <div class="section-label">Client Reviews</div>
+  <h2 class="section-title">What Our Clients Say</h2>
+  <div class="overall-rating">
+    <div class="big-rating">4.9</div>
+    <div class="rating-info">
+      <h3>Exceptional Client Satisfaction</h3>
+      <div class="stars-row">★★★★★</div>
+      <p>Based on 87 verified Google Reviews · Certified Public Accountant</p>
+    </div>
+  </div>
+  <div class="reviews-grid">
+    <div class="review-card">
+      <div class="rev-stars">★★★★★</div>
+      <div class="rev-text">"Reasonable prices and the work will be done very quickly. Highly recommended for anyone looking for a reliable CA firm in Tirupati."</div>
+      <div class="rev-author">Verified Google Reviewer</div>
+      <div class="rev-badge">Google Review · 5★</div>
+    </div>
+    <div class="review-card">
+      <div class="rev-stars">★★★★★</div>
+      <div class="rev-text">"Satisfied with the service and response. The staff was helpful and guided me well throughout the tax filing process."</div>
+      <div class="rev-author">Verified Google Reviewer</div>
+      <div class="rev-badge">Google Review · 5★</div>
+    </div>
+    <div class="review-card">
+      <div class="rev-stars">★★★★★</div>
+      <div class="rev-text">"Excellent services provided by the CA and staff. They handled my GST registration and returns with great professionalism."</div>
+      <div class="rev-author">Verified Google Reviewer</div>
+      <div class="rev-badge">Google Review · 5★</div>
+    </div>
+    <div class="review-card">
+      <div class="rev-stars">★★★★★</div>
+      <div class="rev-text">"Very knowledgeable team. They helped me understand the entire taxation process and ensured all my documents were in order on time."</div>
+      <div class="rev-author">Business Owner, Tirupati</div>
+      <div class="rev-badge">Google Review · 5★</div>
+    </div>
+    <div class="review-card">
+      <div class="rev-stars">★★★★★</div>
+      <div class="rev-text">"Trustworthy and efficient. The best part is they are always available to answer queries and the turnaround time is fantastic."</div>
+      <div class="rev-author">Individual Client</div>
+      <div class="rev-badge">Google Review · 5★</div>
+    </div>
+    <div class="review-card">
+      <div class="rev-stars">★★★★★</div>
+      <div class="rev-text">"Outstanding firm. They completed my company's annual audit well before the deadline and at a very fair price. Will definitely continue."</div>
+      <div class="rev-author">Corporate Client</div>
+      <div class="rev-badge">Google Review · 5★</div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="section-label">Get In Touch</div>
+  <h2 class="section-title">Book a Free Consultation</h2>
+  <p class="section-sub">Reach out to us for any accounting, tax, or compliance requirement. We respond promptly.</p>
+  <div class="contact-grid">
+    <div class="contact-info">
+      <div class="contact-item">
+        <div class="c-icon">📍</div>
+        <div>
+          <div class="c-label">Office Address</div>
+          <div class="c-val"># 19-6-48/A, Dr Mahal Rd</div>
+          <div class="c-sub">Beside Ruchikara Restaurant, Tirupati, AP 517501</div>
+        </div>
+      </div>
+      <div class="contact-item">
+        <div class="c-icon">📞</div>
+        <div>
+          <div class="c-label">Phone</div>
+          <a href="tel:08499990629" class="c-val">084999 90629</a>
+          <div class="c-sub">Mon–Sat, 10AM–6:30PM</div>
+        </div>
+      </div>
+      <div class="contact-item">
+        <div class="c-icon">🕐</div>
+        <div>
+          <div class="c-label">Business Hours</div>
+          <div class="c-val">Mon – Sat: 10:00 AM – 6:30 PM</div>
+          <div class="c-sub">Sunday: Closed</div>
+        </div>
+      </div>
+      <div class="contact-item">
+        <div class="c-icon">📌</div>
+        <div>
+          <div class="c-label">Plus Code</div>
+          <div class="c-val">JCFF+HF Tirupati</div>
+          <div class="c-sub">Andhra Pradesh, India</div>
+        </div>
+      </div>
+      <div style="margin-top:8px;">
+        <a href="https://maps.google.com/?q=Sekhar+and+Associates+Tirupati" target="_blank" class="btn-primary" style="display:inline-block;font-size:13px;">
+          📍 View on Google Maps
+        </a>
+      </div>
+    </div>
+    <form class="contact-form" onsubmit="handleSubmit(event)">
+      <div class="form-row">
+        <div class="form-field">
+          <label>Full Name</label>
+          <input type="text" placeholder="Your name" required>
+        </div>
+        <div class="form-field">
+          <label>Phone Number</label>
+          <input type="tel" placeholder="Your mobile number" required>
+        </div>
+      </div>
+      <div class="form-field">
+        <label>Email Address</label>
+        <input type="email" placeholder="your@email.com">
+      </div>
+      <div class="form-field">
+        <label>Service Required</label>
+        <select>
+          <option value="">Select a service...</option>
+          <option>Income Tax Filing</option>
+          <option>GST Registration / Returns</option>
+          <option>Company / LLP Incorporation</option>
+          <option>Audit & Assurance</option>
+          <option>Accounting & Bookkeeping</option>
+          <option>Business Advisory</option>
+          <option>Other</option>
+        </select>
+      </div>
+      <div class="form-field">
+        <label>Message</label>
+        <textarea placeholder="Briefly describe your requirement..."></textarea>
+      </div>
+      <button type="submit" class="submit-btn">Send Enquiry →</button>
+    </form>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div>
+    <div class="footer-brand">Sekhar <span>&</span> Associates</div>
+    <div style="margin-top:6px;">© 2025 Sekhar & Associates. All Rights Reserved. | Tirupati, AP</div>
+  </div>
+  <div class="footer-links">
+    <a href="#home">Home</a>
+    <a href="#services">Services</a>
+    <a href="#about">About</a>
+    <a href="#reviews">Reviews</a>
+    <a href="#contact">Contact</a>
+  </div>
+</footer>
+
+<script>
+  function handleSubmit(e) {
+    e.preventDefault();
+    const btn = e.target.querySelector('.submit-btn');
+    btn.textContent = '✓ Enquiry Sent!';
+    btn.style.background = '#22c55e';
+    btn.style.color = '#fff';
+    setTimeout(() => {
+      btn.textContent = 'Send Enquiry →';
+      btn.style.background = '';
+      btn.style.color = '';
+      e.target.reset();
+    }, 3000);
+  }
+
+  // Scroll reveal
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(el => {
+      if (el.isIntersecting) {
+        el.target.style.opacity = '1';
+        el.target.style.transform = 'translateY(0)';
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.service-card, .why-card, .review-card, .about-pt').forEach(el => {
+    el.style.opacity = '0';
+    el.style.transform = 'translateY(24px)';
+    el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+    observer.observe(el);
+  });
+</script>
+</body>
+</html>
